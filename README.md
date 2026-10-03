@@ -30,3 +30,6 @@ Photos, additional wording, animations, or other sections can be added later wit
 
 ### Music playback
 The music logic is designed for mobile browsers: it attempts playback after the Tap to Open gesture, retries on the next user interaction if needed, and provides a dedicated play/pause control.
+
+
+Final visual refinements: centered Jaseem weds Kulsum opening, centered couple names on final screen, embedded venue map, and mobile music playback handling.
