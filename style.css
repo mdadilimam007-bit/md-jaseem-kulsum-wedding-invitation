@@ -1,0 +1,47 @@
+*{box-sizing:border-box}
+:root{
+  --green:#071813;--green2:#0d261f;--green3:#14362b;
+  --gold:#c7a45b;--gold2:#e3c783;--cream:#f5efdf;--muted:#b9b09d;
+  --shadow:rgba(0,0,0,.45);
+}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--green);color:var(--cream);font-family:"Cormorant Garamond",serif;font-size:19px;line-height:1.5;overflow-x:hidden}
+body.locked{height:100svh;overflow:hidden}
+button,a{font:inherit}
+.grain{position:fixed;inset:0;z-index:1000;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
+
+.opening{position:fixed;inset:0;z-index:500;background:radial-gradient(circle at 50% 35%,#173a2e 0,#071813 55%,#030b08 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 1.2s,visibility 1.2s}
+.opening.closed{opacity:0;visibility:hidden;pointer-events:none}
+.opening-glow{position:absolute;width:70vmax;height:70vmax;border-radius:50%;background:radial-gradient(circle,rgba(199,164,91,.13),transparent 68%);animation:pulse 5s ease-in-out infinite}
+.arch{width:min(84vw,410px);height:min(75vh,650px);border:1px solid rgba(199,164,91,.6);border-bottom:0;border-radius:210px 210px 0 0;padding:9px;position:relative;box-shadow:0 0 80px rgba(199,164,91,.06)}
+.arch:before{content:"";position:absolute;inset:9px;border:1px solid rgba(199,164,91,.18);border-bottom:0;border-radius:200px 200px 0 0}
+.arch-inner{height:100%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-radius:195px 195px 0 0}
+.closed-card{width:88%;height:72%;background:linear-gradient(145deg,#174233,#0c281f);border:1px solid var(--gold);position:relative;box-shadow:0 25px 70px rgba(0,0,0,.5);animation:float 4s ease-in-out infinite}
+.card-pattern{position:absolute;inset:15px;border:1px solid rgba(199,164,91,.3);background-image:radial-gradient(circle at 50% 50%,transparent 0 40%,rgba(199,164,91,.035) 41% 42%,transparent 43%);background-size:35px 35px}
+.card-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px}
+.gold-line{height:1px;width:65%;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.card-label{font-size:10px;letter-spacing:4px;color:var(--gold);margin:0}.card-monogram{font-family:"Great Vibes",cursive;color:var(--gold2);font-size:75px;line-height:1}.card-monogram span{font-family:"Cormorant Garamond";font-size:32px}
+.open-button{background:transparent;color:var(--cream);border:0;cursor:pointer;letter-spacing:2px;text-transform:uppercase;padding:10px 18px}.open-button small{display:block;color:var(--gold);margin-top:5px}
+.opening-note{position:absolute;bottom:7%;font-size:12px;letter-spacing:3px;color:var(--muted);text-transform:uppercase}
+
+.site{opacity:0;transition:opacity 1s}.site.visible{opacity:1}.music-button{position:fixed;right:17px;top:17px;z-index:200;width:42px;height:42px;border-radius:50%;border:1px solid rgba(199,164,91,.55);background:rgba(7,24,19,.86);color:var(--gold);cursor:pointer;font-size:18px}
+.hero{min-height:100svh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:60px 22px;background:radial-gradient(circle at 50% 20%,rgba(199,164,91,.11),transparent 32%),linear-gradient(180deg,#0c241d,#071813)}
+.hero:before{content:"";position:absolute;inset:18px;border:1px solid rgba(199,164,91,.42)}.hero:after{content:"";position:absolute;inset:29px;border:1px solid rgba(199,164,91,.13)}
+.hero-inner{max-width:700px;position:relative;z-index:2}.ornament{color:var(--gold);font-size:23px;letter-spacing:8px}.arabic{font-family:"Noto Naskh Arabic",serif;direction:rtl}
+.bismillah{font-size:26px;margin:28px 0 14px}.eyebrow{font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin:10px 0}
+h1{font-family:"Great Vibes",cursive;font-size:clamp(65px,16vw,112px);font-weight:400;line-height:.95;color:var(--gold2);margin:15px 0}h1 span{font-family:"Cormorant Garamond";font-size:.4em}
+.parents{display:flex;align-items:center;justify-content:center;gap:18px;margin:28px auto;max-width:570px}.parents>div:not(.amp){display:flex;flex-direction:column;gap:2px}.parents strong{font-size:17px;letter-spacing:2px;font-weight:600}.parents small{font-size:10px;letter-spacing:1px;color:var(--muted)}.parents .amp{font-family:"Great Vibes";color:var(--gold);font-size:38px}
+.invitation-copy{max-width:570px;margin:25px auto;color:#c9c0ae;font-size:18px}.scroll-button{background:transparent;border:1px solid rgba(199,164,91,.65);color:var(--gold2);padding:11px 23px;cursor:pointer;letter-spacing:2px;font-size:13px;text-transform:uppercase}.scroll-button span{margin-left:8px}
+.section{padding:105px 22px;position:relative}.section-inner{max-width:700px;margin:auto;text-align:center}.scratch-section{background:linear-gradient(180deg,#071813,#0d261f)}.countdown-section{background:#06120e}.events-section{background:linear-gradient(180deg,#0d261f,#102d24)}.walima-section{background:#091d17}.dua-section{background:radial-gradient(circle at 50% 35%,rgba(199,164,91,.10),transparent 38%),#06130f}
+h2{font-size:clamp(34px,8vw,52px);font-weight:500;line-height:1.05;margin:10px 0 16px}h3{font-size:30px;font-weight:500;color:var(--gold2);margin:8px 0}.muted{color:var(--muted);font-size:16px}
+.scratch-wrap{width:min(88vw,450px);aspect-ratio:1.55;margin:35px auto 15px;position:relative;border:1px solid rgba(199,164,91,.65);box-shadow:0 25px 70px var(--shadow);overflow:hidden}
+.reveal-card{position:absolute;inset:0;background:#efe3c7;color:#23382e;display:flex;align-items:center;justify-content:center}.reveal-frame{width:84%;height:78%;border:1px solid #a98545;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}.tiny{font-size:10px;letter-spacing:3px}.reveal-title{font-size:27px;color:#8b692b;font-weight:600}.reveal-date{font-size:18px;letter-spacing:2px}.reveal-time{font-size:18px;color:#8b692b}
+#scratchCanvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair;transition:opacity .7s}
+.subtle-button{background:none;border:0;color:var(--gold);text-decoration:underline;font-size:14px;cursor:pointer}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:560px;margin:35px auto 0}.countdown div{border:1px solid rgba(199,164,91,.27);padding:18px 5px}.countdown strong{display:block;color:var(--gold2);font-size:38px;font-weight:500;line-height:1}.countdown span{font-size:11px;color:var(--muted);letter-spacing:1px}
+.event-symbol{color:var(--gold);font-size:28px;margin:25px 0 5px}.event-date-big{color:var(--gold2);letter-spacing:2px;font-size:15px;margin:25px 0 8px}.event-time{color:var(--muted);letter-spacing:2px}
+.venue-card{max-width:470px;margin:38px auto 0;padding:30px 22px;border:1px solid rgba(199,164,91,.3);background:rgba(255,255,255,.025)}.venue-label{font-size:10px;letter-spacing:3px;color:var(--gold);margin:0}.venue-card p:not(.venue-label){color:#c9c0ae}.map-button{display:inline-block;margin-top:10px;border:1px solid var(--gold);color:var(--gold2);padding:10px 18px;text-decoration:none;font-size:13px;letter-spacing:1px}
+.dua{font-size:29px;line-height:1.8;color:var(--gold2);margin:30px auto 20px;max-width:680px}.dua-translation{color:#c9c0ae;font-style:italic;font-size:17px}.final-names{font-family:"Great Vibes",cursive;color:var(--gold2);font-size:clamp(42px,10vw,68px);margin:55px 0 15px}.final-names span{font-family:"Cormorant Garamond";font-size:.5em}.closing-line{max-width:460px;margin:0 auto;color:var(--muted);font-size:17px}.small-ornament{margin-top:45px;font-size:17px}.with-love{font-size:13px;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 1.2s ease,transform 1.2s ease}.reveal.show{opacity:1;transform:none}
+@keyframes pulse{50%{transform:scale(1.08);opacity:.7}}@keyframes float{50%{transform:translateY(-8px)}}
+@media(max-width:500px){.parents{gap:8px}.parents strong{font-size:14px}.parents small{font-size:8px}.countdown strong{font-size:29px}.countdown span{font-size:9px}.dua{font-size:25px}.section{padding:85px 18px}}
