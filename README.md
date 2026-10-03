@@ -5,7 +5,7 @@ This is the polished first build based on the agreed specification.
 ## Included
 - Royal emerald + antique-gold opening
 - Tap-to-open invitation
-- Uploaded Jashn-E-Bahaaraa instrumental as background music
+- Uploaded Jashn-E-Bahaaraa instrumental as background music (MP3 in repository root)
 - Music control
 - Arabic Bismillah
 - Groom and bride names + parents on opening
@@ -26,3 +26,7 @@ Open `index.html` in a modern browser. For best results, publish the folder usin
 
 ## Future edits
 Photos, additional wording, animations, or other sections can be added later without changing the overall architecture.
+
+
+### Music playback
+The music logic is designed for mobile browsers: it attempts playback after the Tap to Open gesture, retries on the next user interaction if needed, and provides a dedicated play/pause control.

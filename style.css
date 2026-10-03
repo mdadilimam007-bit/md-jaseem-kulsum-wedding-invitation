@@ -24,12 +24,41 @@ button,a{font:inherit}
 .open-button{background:transparent;color:var(--cream);border:0;cursor:pointer;letter-spacing:2px;text-transform:uppercase;padding:10px 18px}.open-button small{display:block;color:var(--gold);margin-top:5px}
 .opening-note{position:absolute;bottom:7%;font-size:12px;letter-spacing:3px;color:var(--muted);text-transform:uppercase}
 
-.site{opacity:0;transition:opacity 1s}.site.visible{opacity:1}.music-button{position:fixed;right:17px;top:17px;z-index:200;width:42px;height:42px;border-radius:50%;border:1px solid rgba(199,164,91,.55);background:rgba(7,24,19,.86);color:var(--gold);cursor:pointer;font-size:18px}
+.site{opacity:0;transition:opacity 1s}.site.visible{opacity:1}.music-button{position:fixed;right:17px;top:17px;z-index:200;width:42px;height:42px;border-radius:50%;border:1px solid rgba(199,164,91,.55);background:rgba(7,24,19,.86);color:var(--gold);cursor:pointer;font-size:18px}.music-button.needs-tap{animation:musicPulse 1.4s ease-in-out infinite;box-shadow:0 0 0 0 rgba(199,164,91,.45)}
 .hero{min-height:100svh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:60px 22px;background:radial-gradient(circle at 50% 20%,rgba(199,164,91,.11),transparent 32%),linear-gradient(180deg,#0c241d,#071813)}
 .hero:before{content:"";position:absolute;inset:18px;border:1px solid rgba(199,164,91,.42)}.hero:after{content:"";position:absolute;inset:29px;border:1px solid rgba(199,164,91,.13)}
 .hero-inner{max-width:700px;position:relative;z-index:2}.ornament{color:var(--gold);font-size:23px;letter-spacing:8px}.arabic{font-family:"Noto Naskh Arabic",serif;direction:rtl}
 .bismillah{font-size:26px;margin:28px 0 14px}.eyebrow{font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin:10px 0}
-h1{font-family:"Great Vibes",cursive;font-size:clamp(65px,16vw,112px);font-weight:400;line-height:.95;color:var(--gold2);margin:15px 0}h1 span{font-family:"Cormorant Garamond";font-size:.4em}
+h1.couple-names{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(47px,12vw,78px);
+  font-style:italic;
+  font-weight:600;
+  line-height:.92;
+  letter-spacing:.2px;
+  color:var(--gold2);
+  margin:18px auto 24px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  max-width:100%;
+}
+h1.couple-names .name-line{
+  display:block;
+  white-space:nowrap;
+}
+h1.couple-names .name-amp{
+  display:block;
+  font-family:"Great Vibes",cursive;
+  font-size:.58em;
+  font-style:normal;
+  font-weight:400;
+  line-height:.7;
+  margin:5px 0 7px;
+  color:var(--gold);
+}
 .parents{display:flex;align-items:center;justify-content:center;gap:18px;margin:28px auto;max-width:570px}.parents>div:not(.amp){display:flex;flex-direction:column;gap:2px}.parents strong{font-size:17px;letter-spacing:2px;font-weight:600}.parents small{font-size:10px;letter-spacing:1px;color:var(--muted)}.parents .amp{font-family:"Great Vibes";color:var(--gold);font-size:38px}
 .invitation-copy{max-width:570px;margin:25px auto;color:#c9c0ae;font-size:18px}.scroll-button{background:transparent;border:1px solid rgba(199,164,91,.65);color:var(--gold2);padding:11px 23px;cursor:pointer;letter-spacing:2px;font-size:13px;text-transform:uppercase}.scroll-button span{margin-left:8px}
 .section{padding:105px 22px;position:relative}.section-inner{max-width:700px;margin:auto;text-align:center}.scratch-section{background:linear-gradient(180deg,#071813,#0d261f)}.countdown-section{background:#06120e}.events-section{background:linear-gradient(180deg,#0d261f,#102d24)}.walima-section{background:#091d17}.dua-section{background:radial-gradient(circle at 50% 35%,rgba(199,164,91,.10),transparent 38%),#06130f}
@@ -43,5 +72,5 @@ h2{font-size:clamp(34px,8vw,52px);font-weight:500;line-height:1.05;margin:10px 0
 .venue-card{max-width:470px;margin:38px auto 0;padding:30px 22px;border:1px solid rgba(199,164,91,.3);background:rgba(255,255,255,.025)}.venue-label{font-size:10px;letter-spacing:3px;color:var(--gold);margin:0}.venue-card p:not(.venue-label){color:#c9c0ae}.map-button{display:inline-block;margin-top:10px;border:1px solid var(--gold);color:var(--gold2);padding:10px 18px;text-decoration:none;font-size:13px;letter-spacing:1px}
 .dua{font-size:29px;line-height:1.8;color:var(--gold2);margin:30px auto 20px;max-width:680px}.dua-translation{color:#c9c0ae;font-style:italic;font-size:17px}.final-names{font-family:"Great Vibes",cursive;color:var(--gold2);font-size:clamp(42px,10vw,68px);margin:55px 0 15px}.final-names span{font-family:"Cormorant Garamond";font-size:.5em}.closing-line{max-width:460px;margin:0 auto;color:var(--muted);font-size:17px}.small-ornament{margin-top:45px;font-size:17px}.with-love{font-size:13px;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity 1.2s ease,transform 1.2s ease}.reveal.show{opacity:1;transform:none}
-@keyframes pulse{50%{transform:scale(1.08);opacity:.7}}@keyframes float{50%{transform:translateY(-8px)}}
+@keyframes musicPulse{50%{box-shadow:0 0 0 9px rgba(199,164,91,0)}}@keyframes pulse{50%{transform:scale(1.08);opacity:.7}}@keyframes float{50%{transform:translateY(-8px)}}
 @media(max-width:500px){.parents{gap:8px}.parents strong{font-size:14px}.parents small{font-size:8px}.countdown strong{font-size:29px}.countdown span{font-size:9px}.dua{font-size:25px}.section{padding:85px 18px}}

@@ -7,19 +7,74 @@ const music = document.getElementById("bgMusic");
 const musicButton = document.getElementById("musicButton");
 document.body.classList.add("locked");
 
+let musicWanted = false;
+let musicStarted = false;
+
+function setMusicIcon() {
+  musicButton.textContent = music.paused ? "♪" : "♫";
+  musicButton.setAttribute("aria-label", music.paused ? "Play music" : "Pause music");
+}
+
+async function tryStartMusic() {
+  musicWanted = true;
+  try {
+    music.volume = 0.72;
+    const promise = music.play();
+    if (promise && typeof promise.then === "function") await promise;
+    musicStarted = true;
+    setMusicIcon();
+    return true;
+  } catch (err) {
+    musicStarted = false;
+    setMusicIcon();
+    return false;
+  }
+}
+
 openBtn.addEventListener("click", async () => {
   opening.classList.add("closed");
   site.classList.add("visible");
   site.setAttribute("aria-hidden","false");
   document.body.classList.remove("locked");
-  try { await music.play(); musicButton.textContent="♫"; }
-  catch(e) { musicButton.textContent="♪"; }
+
+  // This click is a direct user gesture, so Android/Chrome normally permits playback here.
+  const started = await tryStartMusic();
+
+  // If playback was blocked, make the music control visibly available.
+  musicButton.classList.toggle("needs-tap", !started);
+
   setTimeout(()=>document.getElementById("scratch").scrollIntoView({behavior:"smooth"}),1100);
 });
 
-musicButton.addEventListener("click", async () => {
-  if(music.paused){try{await music.play();musicButton.textContent="♫"}catch(e){}}
-  else {music.pause();musicButton.textContent="♪"}
+musicButton.addEventListener("click", async (e) => {
+  e.stopPropagation();
+  if (music.paused) {
+    const started = await tryStartMusic();
+    musicButton.classList.toggle("needs-tap", !started);
+  } else {
+    musicWanted = false;
+    music.pause();
+    setMusicIcon();
+    musicButton.classList.remove("needs-tap");
+  }
+});
+
+// If autoplay was blocked on the first attempt, use the next deliberate interaction
+// anywhere on the invitation as another chance to start it.
+document.addEventListener("pointerdown", async (e) => {
+  if (!site.classList.contains("visible")) return;
+  if (e.target.closest("#musicButton")) return;
+  if (musicWanted && music.paused) {
+    const started = await tryStartMusic();
+    musicButton.classList.toggle("needs-tap", !started);
+  }
+}, {passive:true});
+
+music.addEventListener("play", setMusicIcon);
+music.addEventListener("pause", setMusicIcon);
+music.addEventListener("error", () => {
+  musicButton.classList.add("needs-tap");
+  setMusicIcon();
 });
 
 document.querySelectorAll(".scroll-button").forEach(b=>{
