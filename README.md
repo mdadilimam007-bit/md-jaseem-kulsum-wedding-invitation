@@ -33,3 +33,12 @@ The music logic is designed for mobile browsers: it attempts playback after the 
 
 
 Final visual refinements: centered Jaseem weds Kulsum opening, centered couple names on final screen, embedded venue map, and mobile music playback handling.
+
+
+## Latest v5 changes
+- Opening screen is held for a guaranteed 2.6 seconds after “Tap to Open” before it closes.
+- Added a new thumbnail filename `invitation-preview-v2.jpg` to help social apps fetch the new preview instead of using a cached older image.
+- Open Graph and Twitter preview metadata point to the new thumbnail.
+
+### GitHub upload
+Upload/replace `index.html`, `script.js`, `style.css`, and add `invitation-preview-v2.jpg`. Keep `jashn-e-bahaaraa.mp3` in the repository root.

@@ -150,15 +150,19 @@ h1.couple-names .name-amp,
   .map-box{height:205px}
 }
 
-/* Slower opening reveal: approximately 2.6 seconds after Tap to Open */
+/* Opening is held for 2.6s by JavaScript, then fades away. */
 .opening{
-  transition: opacity 2.6s ease, visibility 2.6s ease, transform 2.6s ease;
+  transition: opacity .7s ease, visibility .7s ease, transform .7s ease;
 }
 .opening.closed{
   opacity:0;
   visibility:hidden;
   pointer-events:none;
   transform:scale(1.015);
+}
+.open-button.opening-started{
+  pointer-events:none;
+  opacity:.75;
 }
 .site.visible{
   animation: invitationReveal 2.6s ease both;
