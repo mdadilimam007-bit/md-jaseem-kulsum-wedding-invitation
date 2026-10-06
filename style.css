@@ -149,3 +149,21 @@ h1.couple-names .name-amp,
 @media(max-width:480px){
   .map-box{height:205px}
 }
+
+/* Slower opening reveal: approximately 2.6 seconds after Tap to Open */
+.opening{
+  transition: opacity 2.6s ease, visibility 2.6s ease, transform 2.6s ease;
+}
+.opening.closed{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:scale(1.015);
+}
+.site.visible{
+  animation: invitationReveal 2.6s ease both;
+}
+@keyframes invitationReveal{
+  from{opacity:0; transform:translateY(10px)}
+  to{opacity:1; transform:translateY(0)}
+}

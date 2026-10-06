@@ -43,7 +43,7 @@ openBtn.addEventListener("click", async () => {
   // If playback was blocked, make the music control visibly available.
   musicButton.classList.toggle("needs-tap", !started);
 
-  setTimeout(()=>document.getElementById("scratch").scrollIntoView({behavior:"smooth"}),1100);
+  setTimeout(()=>document.getElementById("scratch").scrollIntoView({behavior:"smooth"}),3000);
 });
 
 musicButton.addEventListener("click", async (e) => {
