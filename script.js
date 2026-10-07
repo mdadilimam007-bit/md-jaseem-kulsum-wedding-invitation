@@ -32,27 +32,28 @@ async function tryStartMusic() {
 }
 
 openBtn.addEventListener("click", async () => {
-  // Keep the opening card on screen for a full 2.6 seconds after the tap.
-  // The class is added only after the hold, so the timing does not depend on
-  // CSS transition support or browser animation timing.
   openBtn.disabled = true;
   openBtn.classList.add("opening-started");
   site.classList.add("visible");
   site.setAttribute("aria-hidden","false");
 
-  // This click is a direct user gesture, so Android/Chrome normally permits playback here.
+  // Start music from the user's tap while the opening card remains visible.
   const started = await tryStartMusic();
   musicButton.classList.toggle("needs-tap", !started);
+
+  // Hard 2.6-second hold. The opening card cannot close before this timer.
+  const openedAt = performance.now();
+  const holdMs = 2600;
 
   setTimeout(() => {
     opening.classList.add("closed");
     document.body.classList.remove("locked");
-  }, 2600);
+  }, Math.max(0, holdMs - (performance.now() - openedAt)));
 
-  // Give the opening animation time to finish before moving down to the invitation.
+  // Do not auto-scroll immediately after opening.
   setTimeout(() => {
     document.getElementById("scratch").scrollIntoView({behavior:"smooth"});
-  }, 5600);
+  }, holdMs + 3000);
 });
 
 musicButton.addEventListener("click", async (e) => {
